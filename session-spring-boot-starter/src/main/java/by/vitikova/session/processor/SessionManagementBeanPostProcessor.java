@@ -76,10 +76,10 @@ public class SessionManagementBeanPostProcessor implements BeanPostProcessor, Be
      * @return прокси-экземпляр бина
      */
     private Object getSessionProxy(Object bean) {
-        SessionClient sessionProviderCommunicator = beanFactory.getBean(SessionClient.class);
-        SessionManagementProperty sessionManagerProperties = beanFactory.getBean(SessionManagementProperty.class);
+        var sessionProviderCommunicator = beanFactory.getBean(SessionClient.class);
+        var sessionManagerProperties = beanFactory.getBean(SessionManagementProperty.class);
 
-        Enhancer enhancer = new Enhancer();
+        var enhancer = new Enhancer();
         enhancer.setSuperclass(bean.getClass());
         enhancer.setCallback(new SessionManagementInterceptor(bean, sessionProviderCommunicator, sessionManagerProperties, beanFactory));
 
