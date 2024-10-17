@@ -1,10 +1,9 @@
 package by.vitikova.session.controller;
 
-import by.vitikova.session.model.dto.SessionDto;
+import by.vitikova.session.SessionDto;
 import by.vitikova.session.service.SessionService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController

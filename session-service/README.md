@@ -1,7 +1,5 @@
 # session-service - микросервис для работы с сессиями
 
-Является частью этого проекта.
-
 ## Описание
 
 - База данных mongoDB;
@@ -19,7 +17,7 @@ http://localhost:8081/api/doc/swagger-ui/index.html
 
 ## Контроллеры
 
-### SessionController (/api/sessions)
+### SessionController (/api/v1/sessions)
 
 #### GET ResponseEntity<SessionDto> getSession(@RequestParam String login):
 

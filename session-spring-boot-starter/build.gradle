@@ -1,19 +1,71 @@
 plugins {
-    id 'java'
+    id 'java-library'
+    id 'maven-publish'
+    id "io.freefair.lombok" version "8.4"
+    id 'org.springframework.boot' version '3.2.1'
+    id 'io.spring.dependency-management' version '1.1.4'
 }
 
 group 'by.vitikova.session'
 version '1.0'
 
+java {
+    sourceCompatibility = '17'
+}
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
 repositories {
+    mavenLocal()
     mavenCentral()
 }
 
 dependencies {
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+    implementation 'by.vitikova.session:session-lib:1.0'
+
+    api "org.springframework.boot:spring-boot-starter"
+    api "org.springframework.boot:spring-boot-starter-web"
+    api "org.springframework.boot:spring-boot-starter-webflux"
+
+    annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
 }
 
 test {
     useJUnitPlatform()
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            groupId = group
+            artifactId = project.name
+            version = version
+            from components.java
+
+            versionMapping {
+                usage('java-api') {
+                    fromResolutionOf('runtimeClasspath')
+                }
+                usage('java-runtime') {
+                    fromResolutionResult()
+                }
+            }
+        }
+    }
+}
+
+tasks.named("build") {
+    finalizedBy('publishToMavenLocal')
+}
+
+bootJar {
+    enabled = false
+}
+
+jar {
+    enabled = true
 }

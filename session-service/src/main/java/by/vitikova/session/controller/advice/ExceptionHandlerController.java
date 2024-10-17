@@ -1,4 +1,4 @@
-package by.vitikova.session.advice;
+package by.vitikova.session.controller.advice;
 
 import by.vitikova.session.exception.ScheduleException;
 import by.vitikova.session.model.dto.ErrorDto;

@@ -1,6 +1,6 @@
 package by.vitikova.session.service;
 
-import by.vitikova.session.model.dto.SessionDto;
+import by.vitikova.session.SessionDto;
 
 public interface SessionService {
 

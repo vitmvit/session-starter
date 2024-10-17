@@ -9,9 +9,9 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @AllArgsConstructor
-public class SessionDto {
+public class UserCreateDto {
 
-    private String id;
     private String login;
-    private LocalDateTime dateCreate;
+    private String password;
+    private LocalDateTime sessionOpen;
 }

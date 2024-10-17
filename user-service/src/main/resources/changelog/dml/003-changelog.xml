@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet id="003" author="vitikova" dbms="postgresql">
+        <sql>
+            TRUNCATE "users";
+            INSERT INTO "users" ("id", "session_open", "login", "password")
+            VALUES (1, '2024-10-17 20:35:37.893995', 'user_1', 'user_1');
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>
