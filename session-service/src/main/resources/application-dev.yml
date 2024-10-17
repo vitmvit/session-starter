@@ -1,0 +1,15 @@
+server:
+  port: 8081
+
+spring:
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: Sessions
+      uri: mongodb://root:root@localhost:27017/Sessions?authSource=admin&retryWrites=true&w=majority
+
+springdoc:
+  swagger-ui:
+    enabled: true
+    path: /api/doc/
