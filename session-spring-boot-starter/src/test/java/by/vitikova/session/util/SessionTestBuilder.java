@@ -1,10 +1,9 @@
 package by.vitikova.session.util;
 
-import by.vitikova.session.SessionCreateDto;
 import by.vitikova.session.SessionDto;
+import by.vitikova.session.model.UserOpenTimeDto;
 import lombok.Builder;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Builder(setterPrefix = "with")
@@ -23,7 +22,7 @@ public class SessionTestBuilder {
         return new SessionDto(id, login, dateCreate);
     }
 
-    public SessionCreateDto buildSessionCreateDto() {
-        return new SessionCreateDto(login);
+    public UserOpenTimeDto buildUserOpenTimeDto() {
+        return new UserOpenTimeDto(login, login);
     }
 }
