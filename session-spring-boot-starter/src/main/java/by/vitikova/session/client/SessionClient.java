@@ -33,7 +33,7 @@ public class SessionClient {
     public SessionDto getSession(SessionCreateDto sessionCreateDto) {
         try {
             log.info("SessionClient: getSession()");
-            UriComponentsBuilder uriBuilder = UriComponentsBuilder
+            var uriBuilder = UriComponentsBuilder
                     .fromUriString(sessionManagerProperties.getSessionProviderUrl())
                     .queryParam("login", sessionCreateDto.login());
             return restTemplate.getForObject(uriBuilder.toUriString(), SessionDto.class);

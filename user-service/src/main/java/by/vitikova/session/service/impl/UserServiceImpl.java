@@ -25,7 +25,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
-    private final UserConverter userMapper;
+    private final UserConverter userConverter;
 
     /**
      * Находит пользователя по его идентификатору.
@@ -37,7 +37,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserDto findById(Long id) {
         log.info("UserServiceImpl: findById() - id = " + id);
-        return userMapper.convert(userRepository.findById(id).orElseThrow(() -> new OperationException("User not found!")));
+        return userConverter.convert(userRepository.findById(id).orElseThrow(() -> new OperationException("User not found!")));
     }
 
     /**
@@ -53,9 +53,9 @@ public class UserServiceImpl implements UserService {
     public UserDto create(UserOpenTimeDto userCreateDto, SessionDto sessionDto) {
         try {
             log.info("UserServiceImpl: create() - login = " + userCreateDto.login());
-            var user = userMapper.convertToCreateDto(userCreateDto);
+            var user = userConverter.convertToCreateDto(userCreateDto);
             user.setSessionOpen(sessionDto.dateCreate());
-            return userMapper.convert(userRepository.save(userMapper.convert(user)));
+            return userConverter.convert(userRepository.save(userConverter.convert(user)));
         } catch (Exception ex) {
             log.error("UserServiceImpl: exception - " + ex.getMessage());
             throw new OperationException("User create exception: " + ex.getMessage());

@@ -34,9 +34,9 @@ public class LoginUtil {
     public static String extractLoginFromArgs(Object[] args, Parameter[] parameters) {
         return IntStream.range(0, args.length)
                 .mapToObj(i -> {
-                    Parameter parameter = parameters[i];
+                    var parameter = parameters[i];
                     if (SessionInfo.class.isAssignableFrom(parameter.getType())) {
-                        SessionInfo login = (SessionInfo) args[i];
+                        var login = (SessionInfo) args[i];
                         return Optional.ofNullable(login.login())
                                 .filter(s -> !s.trim().isEmpty())
                                 .orElseThrow(() -> new AnnotationException(BAD_LOGIN_MESSAGE));
