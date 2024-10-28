@@ -2,8 +2,8 @@ plugins {
     id 'java'
 }
 
-group 'by.vitikova.session'
-version '1.0'
+group 'by.vitikova.session.starter'
+version '1.0-SNAPSHOT'
 
 repositories {
     mavenCentral()
