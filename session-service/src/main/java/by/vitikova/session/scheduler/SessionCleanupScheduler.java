@@ -28,7 +28,7 @@ public class SessionCleanupScheduler {
     @Scheduled(cron = "0 * * * * ?")
     public void cleanUpOldSessions() {
         try {
-            LocalDateTime cutoffDateTime = LocalDateTime.now().minus(1, ChronoUnit.DAYS);
+            var cutoffDateTime = LocalDateTime.now().minus(1, ChronoUnit.DAYS);
             sessionRepository.deleteAll(sessionRepository.findByDateCreateBefore(cutoffDateTime));
             log.info("SessionCleanupScheduler: cleared old sessions older than 24 hours");
         } catch (Exception ex) {

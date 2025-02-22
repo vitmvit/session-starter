@@ -1,0 +1,23 @@
+spring:
+  datasource:
+    username: test
+    password: test
+  jpa:
+    hibernate:
+      ddl-auto: none
+  liquibase:
+    enabled: true
+    change-log: changelog-master-test.xml
+
+session:
+  enable: true
+  black-list:
+    - admin
+    - user
+  black-list-providers:
+    - by.vitikova.session.provider.impl.DefaultBlackListProvider
+    - by.vitikova.session.provider.FileBlackListProvider
+  session-provider-url: "http://localhost:8081/api/v1/sessions"
+
+black-list:
+  path: classpath:list.txt

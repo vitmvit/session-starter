@@ -4,6 +4,7 @@ package by.vitikova.session.model.entity;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.Accessors;
+import lombok.experimental.FieldNameConstants;
 
 import java.time.LocalDateTime;
 
@@ -13,6 +14,7 @@ import java.time.LocalDateTime;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
+@FieldNameConstants
 @Table(name = "users")
 @Accessors(chain = true)
 public class User {

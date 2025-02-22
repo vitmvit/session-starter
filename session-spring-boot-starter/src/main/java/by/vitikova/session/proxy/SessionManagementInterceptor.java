@@ -47,9 +47,9 @@ public class SessionManagementInterceptor implements MethodInterceptor {
     public Object intercept(Object obj, Method method, Object[] args, MethodProxy proxy) throws Throwable {
         if (method.isAnnotationPresent(SessionManagement.class)) {
             SessionManagement annotation = method.getAnnotation(SessionManagement.class);
-            String extractedLogin = extractLoginFromArgs(args, method.getParameters());
+            var extractedLogin = extractLoginFromArgs(args, method.getParameters());
 
-            Set<String> blackList = Optional.of(annotation).stream()
+            var blackList = Optional.of(annotation).stream()
                     .map(annot -> getBlackListProviders(getResultSetProviders(annot)))
                     .map(blackListsFromProviders -> combineBlackLists(annotation.blackList(), blackListsFromProviders))
                     .flatMap(Collection::stream)
@@ -104,11 +104,9 @@ public class SessionManagementInterceptor implements MethodInterceptor {
         return providers.stream()
                 .map(providerClass -> {
                     if (providerClass.equals(DefaultBlackListProvider.class)) {
-                        DefaultBlackListProvider bean = beanFactory.getBean(DefaultBlackListProvider.class);
-                        return bean.getBlackList();
+                        return beanFactory.getBean(DefaultBlackListProvider.class).getBlackList();
                     } else {
-                        BlackListProvider provider = beanFactory.getBean(providerClass);
-                        return provider.getBlackList();
+                        return  beanFactory.getBean(providerClass).getBlackList();
                     }
                 })
                 .flatMap(Set::stream)

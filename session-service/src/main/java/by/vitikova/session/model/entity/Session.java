@@ -3,6 +3,7 @@ package by.vitikova.session.model.entity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.experimental.FieldNameConstants;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -13,6 +14,7 @@ import java.time.LocalDateTime;
 @Setter
 @Document(collection = "sessions")
 @NoArgsConstructor
+@FieldNameConstants
 public class Session {
 
     @Id
